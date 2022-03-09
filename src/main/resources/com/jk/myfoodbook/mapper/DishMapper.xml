@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jk.myfoodbook.mapper.DishMapper">
+
+<!--    List<Dish> getAllDishes();-->
+    <select id="getAllDishes" resultType="Dish">
+        select * from food.dish
+    </select>
+
+<!--    void addDish(Dish dish);-->
+    <insert id="addDish">
+        insert into food.dish values(null,#{name},#{ingredients},#{steps},#{link},#{type})
+    </insert>
+
+<!--    Dish getDishByName(String name);-->
+    <select id="getDishByName" resultType="Dish">
+        select * from food.dish where name=#{name}
+    </select>
+
+<!--    List<Dish> getDishesByType(Integer type);-->
+    <select id="getDishesByType" resultType="Dish">
+        select * from food.dish where type=#{type}
+    </select>
+
+<!--    void updateDish(Dish dish);-->
+    <update id="updateDish">
+        update food.dish
+        set name=#{name},
+            ingredients=#{ingredients},
+            steps=#{steps},
+            link=#{link},
+            type=#{type}
+        where id=#{id}
+    </update>
+
+<!--    deleteDish-->
+    <delete id="deleteDish">
+        delete from food.dish where id=#{id}
+    </delete>
+
+</mapper>
